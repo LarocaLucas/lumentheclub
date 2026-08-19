@@ -418,7 +418,7 @@ function renderProgramacao() {
         ${evento.media 
           ? (evento.media.endsWith('.mp4') || evento.media.endsWith('.webm')
               ? `<div class="programacao__card-media">
-                   <video src="${R2_BASE}/agenda/${evento.media}" autoplay loop muted playsinline></video>
+                   <video src="${R2_BASE}/agenda/${evento.media}" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
                  </div>`
               : `<div class="programacao__card-media">
                    <img src="${R2_BASE}/agenda/${evento.media}" alt="${evento.nome}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
