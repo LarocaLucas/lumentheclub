@@ -4,3 +4,8 @@ dist/
 *.local
 .env
 .env.*
+
+# Ignorados pelo usuário
+referencias-visuais/
+logo-baixa-resolucao.jpg
+prompt-antigravity-lumen-v1.md
