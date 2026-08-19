@@ -285,6 +285,23 @@
   line-height: 1.7;
 }
 
+.programacao__card-image-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background-color: var(--color-black-90);
+  border: 1px dashed var(--color-gold-20);
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold-40);
+  font-size: var(--text-small);
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
 .programacao__card-cta {
   margin-top: auto;
   padding-top: var(--space-sm);
@@ -373,12 +390,12 @@
   width: 100%;
   height: 100%;
   border: 0;
-  filter: grayscale(0.6) brightness(0.7) contrast(1.1);
+  filter: brightness(0.9) contrast(1.1);
   transition: filter var(--duration-normal);
 }
 
 .localizacao__map-wrapper:hover iframe {
-  filter: grayscale(0.3) brightness(0.8) contrast(1.05);
+  filter: brightness(1) contrast(1);
 }
 
 

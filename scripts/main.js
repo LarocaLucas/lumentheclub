@@ -28,16 +28,14 @@ gsap.registerPlugin(ScrollTrigger);
 const PROGRAMACAO = [
   {
     dia: 'Sexta',
-    data: '22/08',
+    data: '21/08',
     nome: 'Lumen Sessions',
-    lineup: 'DJ convidado a confirmar',
     destaque: false,
   },
   {
-    dia: 'Sabado',
-    data: '23/08',
+    dia: 'Sábado',
+    data: '22/08',
     nome: 'The Glow Night',
-    lineup: 'Line-up especial a confirmar',
     destaque: true,
   },
 ];
@@ -412,7 +410,7 @@ function renderProgramacao() {
         <span class="programacao__card-day">${evento.dia}</span>
         <span class="programacao__card-date">${evento.data}</span>
         <h3 class="programacao__card-name">${evento.nome}</h3>
-        <p class="programacao__card-lineup">${evento.lineup}</p>
+        <div class="programacao__card-image-placeholder">Arte / Vídeo<br>(4:5)</div>
         <div class="programacao__card-cta">
           <a href="${WHATSAPP_RESERVAS}" target="_blank" rel="noopener" class="btn btn--ghost">
             Reservar
