@@ -544,7 +544,7 @@ function initLightbox() {
  */
 async function downloadPhoto(url, filename) {
   try {
-    const response = await fetch(url, { mode: 'cors' });
+    const response = await fetch(url, { mode: 'cors', cache: 'no-cache' });
     if (!response.ok) throw new Error('Falha ao baixar imagem');
 
     const blob = await response.blob();
