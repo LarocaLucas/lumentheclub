@@ -535,20 +535,17 @@ function initLightbox() {
    ═══════════════════════════════════════════════════════════ */
 
 /**
- * Faz o download da foto, tentando bypassar o bloqueio de CORS do R2
- * para que o download seja automatico em vez de abrir nova aba.
+ * Faz o download da foto, bypassando a restricao nativa de ancoras cross-origin.
+ * Graças ao CORS configurado no R2, o fetch consegue baixar os bits da imagem
+ * e forcar o download como um arquivo local para o usuario.
  *
- * @param {string} url - URL da foto
+ * @param {string} url - URL original da foto no R2
  * @param {string} filename - Nome do arquivo para salvar
  */
 async function downloadPhoto(url, filename) {
   try {
-    // Usamos um proxy de CORS temporario para forçar o download direto.
-    // O ideal definitivo eh configurar o CORS diretamente no bucket R2.
-    const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(url)}`;
-    
-    const response = await fetch(proxyUrl, { mode: 'cors' });
-    if (!response.ok) throw new Error('Falha ao baixar via proxy');
+    const response = await fetch(url, { mode: 'cors' });
+    if (!response.ok) throw new Error('Falha ao baixar imagem');
 
     const blob = await response.blob();
     const blobUrl = URL.createObjectURL(blob);
@@ -566,7 +563,7 @@ async function downloadPhoto(url, filename) {
       document.body.removeChild(link);
     }, 100);
   } catch (error) {
-    /* Fallback: abre em nova aba se o CORS proxy falhar */
+    /* Fallback de seguranca: abre em nova aba */
     window.open(url, '_blank');
   }
 }
