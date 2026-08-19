@@ -496,7 +496,7 @@
 .galeria-highlight__bg {
   position: absolute;
   inset: 0;
-  background-image: url('https://pub-a310d53da94b402fbe5eefd9ab47216b.r2.dev/RODAGEM%20LUMEN/38.jpg'); /* Exemplo de foto */
+  background-image: url('../assets/images/43.jpg');
   background-size: cover;
   background-position: center;
   opacity: 0.15;
