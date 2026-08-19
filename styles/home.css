@@ -478,6 +478,62 @@
   color: var(--color-gold);
 }
 
+/* ═══════════════════════════════════════════════════════════
+   GALERIA HIGHLIGHT
+   ═══════════════════════════════════════════════════════════ */
+
+.galeria-highlight {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-xxl) 0;
+  text-align: center;
+}
+
+.galeria-highlight__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://pub-a310d53da94b402fbe5eefd9ab47216b.r2.dev/RODAGEM%20LUMEN/38.jpg'); /* Exemplo de foto */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.2;
+  filter: grayscale(80%) contrast(1.2);
+  z-index: 0;
+}
+
+.galeria-highlight::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--color-bg-primary) 0%, transparent 50%, var(--color-bg-primary) 100%);
+  z-index: 1;
+}
+
+.galeria-highlight__container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.galeria-highlight__content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.galeria-highlight__content p {
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  margin-bottom: var(--space-lg);
+  line-height: 1.6;
+}
+
+.galeria-highlight__content .btn {
+  display: inline-flex;
+}
+
 .contato__card-icon svg {
   width: 22px;
   height: 22px;

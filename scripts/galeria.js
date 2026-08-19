@@ -47,9 +47,9 @@ const ALBUNS = [
 
 /**
  * Quantidade de fotos carregadas por vez (lazy loading em lotes).
- * Valores menores = carregamento mais rapido, mais requests.
+ * Alterado para 200 para carregar todas as miniaturas de uma vez (já que o proxy wsrv as deixou leves).
  */
-const BATCH_SIZE = 10;
+const BATCH_SIZE = 200;
 
 
 /* ═══════════════════════════════════════════════════════════
