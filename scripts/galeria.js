@@ -42,13 +42,14 @@ const R2_BASE = 'https://pub-a310d53da94b402fbe5eefd9ab47216b.r2.dev';
  */
 const ALBUNS = [
   { folder: 'RODAGEM LUMEN', label: 'Rodagem Lumen', total: 200 },
+  { folder: 'INAUGURACAO', label: 'Inauguração', total: 50 },
 ];
 
 /**
  * Quantidade de fotos carregadas por vez (lazy loading em lotes).
  * Valores menores = carregamento mais rapido, mais requests.
  */
-const BATCH_SIZE = 20;
+const BATCH_SIZE = 10;
 
 
 /* ═══════════════════════════════════════════════════════════
@@ -167,6 +168,10 @@ function renderGrid() {
   const grid = document.getElementById('galeriaGrid');
   if (!grid) return;
   grid.innerHTML = '';
+  
+  // Remove empty state se existir
+  const emptyState = document.getElementById('galeriaEmptyState');
+  if (emptyState) emptyState.remove();
 }
 
 /**
@@ -217,9 +222,10 @@ function createPhotoItem(url, num, total) {
   /* Skeleton loader enquanto a imagem carrega */
   item.classList.add('galeria-grid__skeleton');
 
-  /* Imagem com lazy loading nativo */
+  /* Imagem com lazy loading nativo e async decoding para performance */
   const img = document.createElement('img');
   img.loading = 'lazy';
+  img.decoding = 'async';
   img.alt = `Foto ${num} de ${total}`;
   img.src = url;
 
@@ -228,8 +234,12 @@ function createPhotoItem(url, num, total) {
   });
 
   img.addEventListener('error', function () {
-    /* Se a imagem falhar, esconde o item */
     item.style.display = 'none';
+    
+    // Se a primeira foto falhar, assumimos que o album esta vazio/indisponivel
+    if (num === 1) {
+      showEmptyState();
+    }
   });
 
   /* Numero da foto (aparece no hover) */
@@ -264,6 +274,37 @@ function createPhotoItem(url, num, total) {
   item.appendChild(downloadBtn);
 
   return item;
+}
+
+/**
+ * Exibe o estado vazio quando o album nao possui fotos.
+ */
+function showEmptyState() {
+  const grid = document.getElementById('galeriaGrid');
+  if (!grid) return;
+  
+  // Evita duplicatas
+  if (document.getElementById('galeriaEmptyState')) return;
+
+  const album = ALBUNS[activeAlbumIndex];
+  const empty = document.createElement('div');
+  empty.id = 'galeriaEmptyState';
+  empty.className = 'galeria-empty';
+  empty.innerHTML = `
+    <div class="galeria-empty__content">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+        <polyline points="21 15 16 10 5 21"></polyline>
+      </svg>
+      <h3>Álbum em breve</h3>
+      <p>As fotos do evento <strong>${album.label}</strong> ainda não estão disponíveis.<br>Acompanhe nosso Instagram para atualizações.</p>
+      <a href="https://instagram.com/lumentheclub_" target="_blank" rel="noopener" class="btn btn--secondary">Seguir Instagram</a>
+    </div>
+  `;
+  
+  // Insere logo apos o grid
+  grid.parentElement.insertBefore(empty, grid.nextSibling);
 }
 
 /**
