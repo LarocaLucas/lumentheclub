@@ -186,8 +186,8 @@
 .conceito__mask-svg {
   width: clamp(250px, 30vw, 400px);
   height: auto;
-  opacity: 0.12;
-  filter: drop-shadow(0 0 40px rgba(201, 162, 76, 0.15));
+  opacity: 0.15;
+  filter: invert(74%) sepia(21%) saturate(913%) hue-rotate(5deg) brightness(88%) contrast(88%) drop-shadow(0 0 40px rgba(201, 162, 76, 0.2));
 }
 
 
