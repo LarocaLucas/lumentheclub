@@ -190,6 +190,12 @@
   filter: invert(74%) sepia(21%) saturate(913%) hue-rotate(5deg) brightness(88%) contrast(88%) drop-shadow(0 0 40px rgba(201, 162, 76, 0.2));
 }
 
+@media (max-width: 768px) {
+  .conceito__visual {
+    display: none;
+  }
+}
+
 
 /* ── PROGRAMACAO ───────────────────────────────────────── */
 
