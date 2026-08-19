@@ -534,6 +534,7 @@ body {
     transform: translateX(100%);
     transition: transform var(--duration-slow) var(--ease-smooth);
     padding: var(--space-lg);
+    z-index: 1000;
   }
 
   .nav__links--open {
