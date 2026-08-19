@@ -39,8 +39,9 @@ const PROGRAMACAO = [
   {
     dia: 'Sábado',
     data: '22/08',
-    nome: 'The Glow Night',
+    nome: 'The Night',
     destaque: true,
+    media: '22-08.mp4',
   },
 ];
 
