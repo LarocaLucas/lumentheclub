@@ -169,6 +169,10 @@ function renderGrid() {
   if (!grid) return;
   grid.innerHTML = '';
   
+  if (window.galeriaObserver) {
+    window.galeriaObserver.disconnect();
+  }
+  
   // Remove empty state se existir
   const emptyState = document.getElementById('galeriaEmptyState');
   if (emptyState) emptyState.remove();
@@ -203,6 +207,28 @@ function loadNextBatch() {
 
   /* Atualiza a lista de fotos para o lightbox */
   updateLightboxPhotos();
+  
+  /* Reconecta o observer no novo ultimo elemento */
+  reconnectObserver();
+}
+
+/**
+ * Reconecta o Intersection Observer ao ultimo item da galeria
+ * para garantir que o scroll infinito continue funcionando.
+ */
+function reconnectObserver() {
+  if (!window.galeriaObserver) return;
+  
+  const grid = document.getElementById('galeriaGrid');
+  if (!grid) return;
+  
+  const items = grid.querySelectorAll('.galeria-grid__item');
+  if (items.length === 0) return;
+  
+  // Desconecta do anterior e observa o ultimo
+  window.galeriaObserver.disconnect();
+  const lastItem = items[items.length - 1];
+  window.galeriaObserver.observe(lastItem);
 }
 
 /**
@@ -223,11 +249,17 @@ function createPhotoItem(url, num, total) {
   item.classList.add('galeria-grid__skeleton');
 
   /* Imagem com lazy loading nativo e async decoding para performance */
+  /* Utilizamos um proxy publico (wsrv.nl) temporariamente para gerar miniaturas fluidas */
+  const cleanUrl = url.replace('https://', '');
+  const thumbUrl = `https://wsrv.nl/?url=${encodeURIComponent(cleanUrl)}&w=400&output=webp&q=70`;
+  
   const img = document.createElement('img');
   img.loading = 'lazy';
   img.decoding = 'async';
   img.alt = `Foto ${num} de ${total}`;
-  img.src = url;
+  // Usamos a miniatura no grid, mas guardamos a original no dataset
+  img.src = thumbUrl;
+  img.dataset.full = url;
 
   img.addEventListener('load', function () {
     item.classList.remove('galeria-grid__skeleton');
@@ -332,15 +364,7 @@ function updateLightboxPhotos() {
  * e carrega o proximo lote automaticamente.
  */
 function initInfiniteScroll() {
-  const sentinel = document.createElement('div');
-  sentinel.style.height = '1px';
-  sentinel.id = 'scrollSentinel';
-
-  const grid = document.getElementById('galeriaGrid');
-  if (!grid || !grid.parentElement) return;
-  grid.parentElement.appendChild(sentinel);
-
-  const observer = new IntersectionObserver(function (entries) {
+  window.galeriaObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting && !isLoading) {
         loadNextBatch();
@@ -349,8 +373,6 @@ function initInfiniteScroll() {
   }, {
     rootMargin: '400px',
   });
-
-  observer.observe(sentinel);
 }
 
 
