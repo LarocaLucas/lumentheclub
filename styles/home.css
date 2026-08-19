@@ -485,7 +485,11 @@
 .galeria-highlight {
   position: relative;
   overflow: hidden;
-  padding: var(--space-xxl) 0;
+  padding: 120px 20px;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
@@ -495,8 +499,7 @@
   background-image: url('https://pub-a310d53da94b402fbe5eefd9ab47216b.r2.dev/RODAGEM%20LUMEN/38.jpg'); /* Exemplo de foto */
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  opacity: 0.2;
+  opacity: 0.15;
   filter: grayscale(80%) contrast(1.2);
   z-index: 0;
 }
