@@ -415,9 +415,13 @@ function renderProgramacao() {
         <span class="programacao__card-date">${evento.data}</span>
         <h3 class="programacao__card-name">${evento.nome}</h3>
         ${evento.media 
-          ? `<div class="programacao__card-media">
-               <video src="${R2_BASE}/agenda/${evento.media}" autoplay loop muted playsinline></video>
-             </div>`
+          ? (evento.media.endsWith('.mp4') || evento.media.endsWith('.webm')
+              ? `<div class="programacao__card-media">
+                   <video src="${R2_BASE}/agenda/${evento.media}" autoplay loop muted playsinline></video>
+                 </div>`
+              : `<div class="programacao__card-media">
+                   <img src="${R2_BASE}/agenda/${evento.media}" alt="${evento.nome}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+                 </div>`)
           : `<div class="programacao__card-image-placeholder">Arte / Vídeo<br>(4:5)</div>`
         }
         <div class="programacao__card-cta">
