@@ -25,12 +25,16 @@ gsap.registerPlugin(ScrollTrigger);
    O site renderiza automaticamente a partir destes dados.
    ═══════════════════════════════════════════════════════════ */
 
+// Substituir pelo link publico temporario do R2 (ex: https://pub-1234.r2.dev)
+const R2_BASE = 'https://pub-a310d53da94b402fbe5eefd9ab47216b.r2.dev';
+
 const PROGRAMACAO = [
   {
     dia: 'Sexta',
     data: '21/08',
     nome: 'Lumen Sessions',
     destaque: false,
+    media: '21-08.mp4',
   },
   {
     dia: 'Sábado',
@@ -410,7 +414,12 @@ function renderProgramacao() {
         <span class="programacao__card-day">${evento.dia}</span>
         <span class="programacao__card-date">${evento.data}</span>
         <h3 class="programacao__card-name">${evento.nome}</h3>
-        <div class="programacao__card-image-placeholder">Arte / Vídeo<br>(4:5)</div>
+        ${evento.media 
+          ? `<div class="programacao__card-media">
+               <video src="${R2_BASE}/agenda/${evento.media}" autoplay loop muted playsinline></video>
+             </div>`
+          : `<div class="programacao__card-image-placeholder">Arte / Vídeo<br>(4:5)</div>`
+        }
         <div class="programacao__card-cta">
           <a href="${WHATSAPP_RESERVAS}" target="_blank" rel="noopener" class="btn btn--ghost">
             Reservar

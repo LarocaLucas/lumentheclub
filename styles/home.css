@@ -308,6 +308,24 @@
   letter-spacing: 0.1em;
 }
 
+.programacao__card-media {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-sm);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background-color: var(--color-black-90);
+  border: 1px solid var(--color-gold-10);
+}
+
+.programacao__card-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .programacao__card-cta {
   margin-top: auto;
   padding-top: var(--space-sm);

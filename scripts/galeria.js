@@ -28,7 +28,7 @@
  * PLACEHOLDER: atualizar quando o subdominio for configurado
  * no Cloudflare (R2 > Custom Domain).
  */
-const R2_BASE = 'https://fotos.lumentheclub.com.br';
+const R2_BASE = 'https://pub-a310d53da94b402fbe5eefd9ab47216b.r2.dev';
 
 /**
  * Registro de albuns disponiveis na galeria.
