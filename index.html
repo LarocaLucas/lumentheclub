@@ -17,21 +17,27 @@
 
   <!-- CSS (arquivos separados, nunca inline) -->
   <link rel="stylesheet" href="/styles/main.css">
-  <link rel="stylesheet" href="/styles/home.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/home.css">
 </head>
 <body>
 
   <!-- ═══ NAVEGACAO ═══ -->
   <nav class="nav" id="navbar">
-    <a href="/" class="nav__brand" aria-label="Lumen The Club - Home">
-      <img src="/assets/svg/logo-lumen.svg" alt="Lumen The Club" class="nav__logo">
+    <a href="./" class="nav__brand" aria-label="Lumen The Club - Home">
+      <img src="assets/svg/logo-lumen.svg" alt="Lumen The Club" class="nav__logo">
     </a>
+
+    <!-- Hamburger menu para mobile -->
+    <button class="nav__toggle" aria-label="Abrir menu" id="navToggle">
+      <span class="nav__toggle-icon"></span>
+    </button>
 
     <ul class="nav__links" id="navLinks">
       <li><a href="#conceito" class="nav__link">A Lumen</a></li>
       <li><a href="#programacao" class="nav__link">Programação</a></li>
       <li><a href="#localizacao" class="nav__link">Localização</a></li>
-      <li><a href="/galeria.html" class="nav__link">Galeria</a></li>
+      <li><a href="galeria.html" class="nav__link">Galeria</a></li>
       <li><a href="#contato" class="nav__link">Contato</a></li>
       <li>
         <a href="https://instagram.com/lumentheclub_" target="_blank" rel="noopener" class="nav__social" aria-label="Instagram">
@@ -304,10 +310,10 @@
           <div class="footer__nav">
             <h4 class="footer__title">Navegação</h4>
             <ul>
-              <li><a href="/#conceito">A Lumen</a></li>
-              <li><a href="/#programacao">Programação</a></li>
-              <li><a href="/#localizacao">Localização</a></li>
-              <li><a href="/galeria.html">Galeria</a></li>
+              <li><a href="#conceito">A Lumen</a></li>
+              <li><a href="#programacao">Programação</a></li>
+              <li><a href="#localizacao">Localização</a></li>
+              <li><a href="galeria.html">Galeria</a></li>
             </ul>
           </div>
         </div>
