@@ -32,7 +32,7 @@ const PROGRAMACAO = [
   {
     dia: 'Sexta',
     data: '21/08',
-    nome: 'Lumen Sessions',
+    nome: 'Baile da Lumen',
     destaque: false,
     media: '21-08.mp4',
   },
