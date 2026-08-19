@@ -1,0 +1,504 @@
+/* ══════════════════════════════════════════════════════════
+   LUMEN THE CLUB — Home Page (home.css)
+   
+   Estilos especificos de cada secao da pagina principal.
+   Hero, Conceito, Programacao, Localizacao, Contato.
+   ══════════════════════════════════════════════════════════ */
+
+
+/* ── HERO ──────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: var(--space-lg) var(--section-padding-x);
+}
+
+/* Canvas de particulas bokeh (fica atras de tudo) */
+.hero__particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Overlay gradient sutil para legibilidade */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(
+    ellipse at center bottom,
+    rgba(201, 162, 76, 0.06) 0%,
+    transparent 60%
+  ),
+  linear-gradient(
+    to bottom,
+    transparent 70%,
+    var(--color-bg-primary) 100%
+  );
+  pointer-events: none;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Logo SVG no hero */
+.hero__logo {
+  width: clamp(180px, 30vw, 320px);
+  height: auto;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+/* Tagline "The Glow of the Night" */
+.hero__tagline {
+  font-family: var(--font-script);
+  font-size: var(--text-hero-tagline);
+  color: var(--color-champagne);
+  animation: glowPulseSoft 3s ease-in-out infinite;
+  margin-top: var(--space-xs);
+}
+
+/* Sub texto no hero */
+.hero__subtitle {
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: var(--space-xs);
+}
+
+/* CTAs do hero */
+.hero__ctas {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Scroll indicator */
+.hero__scroll {
+  position: absolute;
+  bottom: var(--space-md);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-dim);
+  animation: float 2s ease-in-out infinite;
+}
+
+.hero__scroll-text {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--color-gold-40), transparent);
+}
+
+
+/* ── CONCEITO ──────────────────────────────────────────── */
+
+.conceito {
+  position: relative;
+}
+
+.conceito__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.conceito__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.conceito__description {
+  color: var(--color-text-secondary);
+  line-height: 1.9;
+  max-width: 520px;
+}
+
+.conceito__features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.conceito__feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--text-small);
+}
+
+.conceito__feature-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--color-gold-20);
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.conceito__feature-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Lado decorativo: mascara veneziana grande */
+.conceito__visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.conceito__mask-svg {
+  width: clamp(250px, 30vw, 400px);
+  height: auto;
+  opacity: 0.12;
+  filter: drop-shadow(0 0 40px rgba(201, 162, 76, 0.15));
+}
+
+
+/* ── PROGRAMACAO ───────────────────────────────────────── */
+
+.programacao {
+  position: relative;
+}
+
+.programacao__header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.programacao__subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--text-small);
+  margin-top: var(--space-sm);
+  letter-spacing: 0.06em;
+}
+
+/* Grid de cards de eventos */
+.programacao__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+
+/* Card individual */
+.programacao__card {
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-secondary) 0%,
+    rgba(23, 23, 26, 0.6) 100%
+  );
+  border: 1px solid var(--color-gold-10);
+  border-radius: var(--border-radius);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  transition: all var(--duration-normal) var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.programacao__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  opacity: 0;
+  transition: opacity var(--duration-normal);
+}
+
+.programacao__card:hover {
+  border-color: var(--color-gold-20);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px var(--color-gold-10);
+}
+
+.programacao__card:hover::before {
+  opacity: 1;
+}
+
+.programacao__card-day {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--color-gold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.programacao__card-date {
+  font-size: var(--text-small);
+  color: var(--color-text-dim);
+  letter-spacing: 0.08em;
+}
+
+.programacao__card-name {
+  font-family: var(--font-display);
+  font-size: var(--text-card-title);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.programacao__card-lineup {
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.programacao__card-cta {
+  margin-top: auto;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-gold-05);
+}
+
+/* Estado vazio (sem programacao definida) */
+.programacao__empty {
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+  color: var(--color-text-secondary);
+}
+
+.programacao__empty-text {
+  font-size: var(--text-body);
+  margin-bottom: var(--space-md);
+}
+
+
+/* ── LOCALIZACAO ───────────────────────────────────────── */
+
+.localizacao {
+  position: relative;
+}
+
+.localizacao__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.localizacao__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.localizacao__detail {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.localizacao__icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--color-gold-20);
+  color: var(--color-gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.localizacao__icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.localizacao__detail-label {
+  font-size: var(--text-small);
+  color: var(--color-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+.localizacao__detail-value {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* Container do mapa */
+.localizacao__map-wrapper {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  border: 1px solid var(--color-gold-10);
+  aspect-ratio: 4 / 3;
+}
+
+.localizacao__map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(0.6) brightness(0.7) contrast(1.1);
+  transition: filter var(--duration-normal);
+}
+
+.localizacao__map-wrapper:hover iframe {
+  filter: grayscale(0.3) brightness(0.8) contrast(1.05);
+}
+
+
+/* ── CONTATO ───────────────────────────────────────────── */
+
+.contato {
+  text-align: center;
+  position: relative;
+}
+
+.contato__header {
+  margin-bottom: var(--space-lg);
+}
+
+.contato__description {
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  margin: var(--space-sm) auto 0;
+  line-height: 1.7;
+}
+
+.contato__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-md);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contato__card {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-gold-10);
+  border-radius: var(--border-radius);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+.contato__card:hover {
+  border-color: var(--color-gold-20);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px var(--color-gold-10);
+}
+
+.contato__card-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--color-gold-20);
+  color: var(--color-gold);
+}
+
+.contato__card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.contato__card-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.contato__card-text {
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+}
+
+
+/* ── RESPONSIVO (home) ─────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .conceito__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .conceito__visual {
+    order: -1;
+  }
+
+  .conceito__mask-svg {
+    width: 200px;
+    opacity: 0.08;
+  }
+
+  .localizacao__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .localizacao__map-wrapper {
+    aspect-ratio: 16 / 10;
+  }
+
+  .programacao__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__ctas {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .hero__ctas .btn {
+    width: 100%;
+  }
+}

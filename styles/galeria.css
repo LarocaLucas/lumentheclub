@@ -1,0 +1,407 @@
+/* ══════════════════════════════════════════════════════════
+   LUMEN THE CLUB — Galeria (galeria.css)
+   
+   Estilos da pagina de galeria de fotos.
+   Grid de fotos, filtro de albuns, lightbox com download.
+   ══════════════════════════════════════════════════════════ */
+
+
+/* ── Header da galeria ─────────────────────────────────── */
+
+.galeria-header {
+  padding: calc(var(--nav-height) + var(--space-xl)) var(--section-padding-x) var(--space-lg);
+  text-align: center;
+  position: relative;
+}
+
+.galeria-header__title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.galeria-header__subtitle {
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-sm);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+.galeria-header__instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-gold);
+  font-size: var(--text-small);
+  margin-top: var(--space-sm);
+  transition: color var(--duration-fast);
+}
+
+.galeria-header__instagram:hover {
+  color: var(--color-champagne);
+}
+
+.galeria-header__instagram svg {
+  width: 14px;
+  height: 14px;
+}
+
+
+/* ── Filtro de albuns ──────────────────────────────────── */
+
+.galeria-filtro {
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--section-padding-x);
+  border-bottom: 1px solid var(--color-gold-05);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.galeria-filtro::-webkit-scrollbar {
+  display: none;
+}
+
+.galeria-filtro__btn {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-dim);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-smooth);
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.galeria-filtro__btn:hover {
+  color: var(--color-text-secondary);
+}
+
+.galeria-filtro__btn--active {
+  color: var(--color-gold);
+  border-bottom-color: var(--color-gold);
+}
+
+
+/* ── Grid de fotos ─────────────────────────────────────── */
+
+.galeria-grid {
+  padding: var(--space-md) var(--section-padding-x);
+}
+
+.galeria-grid__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-sm);
+}
+
+/* Item individual da foto */
+.galeria-grid__item {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--color-bg-secondary);
+}
+
+.galeria-grid__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-smooth),
+              filter var(--duration-normal);
+}
+
+/* Overlay no hover com glow dourado */
+.galeria-grid__item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(11, 11, 13, 0.7) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-smooth);
+}
+
+.galeria-grid__item:hover::after {
+  opacity: 1;
+}
+
+.galeria-grid__item:hover img {
+  transform: scale(1.05);
+}
+
+.galeria-grid__item:hover {
+  box-shadow: 0 0 20px var(--color-gold-20),
+              0 0 40px var(--color-gold-10);
+}
+
+/* Botao de download no hover */
+.galeria-grid__download {
+  position: absolute;
+  bottom: var(--space-sm);
+  right: var(--space-sm);
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+  color: var(--color-bg-primary);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+.galeria-grid__download svg {
+  width: 16px;
+  height: 16px;
+}
+
+.galeria-grid__item:hover .galeria-grid__download {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.galeria-grid__download:hover {
+  background-color: var(--color-champagne);
+  box-shadow: var(--glow-gold-soft);
+}
+
+/* Numero da foto */
+.galeria-grid__number {
+  position: absolute;
+  top: var(--space-xs);
+  left: var(--space-xs);
+  z-index: 2;
+  font-size: 0.65rem;
+  color: var(--color-text-primary);
+  background-color: var(--color-black-60);
+  padding: 2px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity var(--duration-normal);
+}
+
+.galeria-grid__item:hover .galeria-grid__number {
+  opacity: 1;
+}
+
+/* Skeleton loader para imagens carregando */
+.galeria-grid__skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-secondary) 25%,
+    var(--color-bg-elevated) 50%,
+    var(--color-bg-secondary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+
+/* ── Lightbox ──────────────────────────────────────────── */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.95);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-normal),
+              visibility var(--duration-normal);
+}
+
+.lightbox--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox__image {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--border-radius);
+  user-select: none;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-primary);
+  transition: color var(--duration-fast);
+  z-index: 2001;
+}
+
+.lightbox__close:hover {
+  color: var(--color-gold);
+}
+
+.lightbox__close svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Navegacao prev/next */
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-primary);
+  transition: all var(--duration-fast);
+  border-radius: 50%;
+}
+
+.lightbox__nav:hover {
+  color: var(--color-gold);
+  background-color: var(--color-gold-10);
+}
+
+.lightbox__nav svg {
+  width: 24px;
+  height: 24px;
+}
+
+.lightbox__nav--prev {
+  left: var(--space-md);
+}
+
+.lightbox__nav--next {
+  right: var(--space-md);
+}
+
+/* Contador e download no lightbox */
+.lightbox__toolbar {
+  position: absolute;
+  bottom: var(--space-md);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.lightbox__counter {
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+  letter-spacing: 0.08em;
+}
+
+.lightbox__download-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--text-small);
+  color: var(--color-gold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color var(--duration-fast);
+}
+
+.lightbox__download-btn:hover {
+  color: var(--color-champagne);
+}
+
+.lightbox__download-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+/* ── Estado vazio ──────────────────────────────────────── */
+
+.galeria-empty {
+  text-align: center;
+  padding: var(--space-2xl) var(--section-padding-x);
+  color: var(--color-text-secondary);
+}
+
+.galeria-empty__text {
+  font-size: var(--text-body);
+  margin-bottom: var(--space-md);
+}
+
+
+/* ── Responsivo (galeria) ──────────────────────────────── */
+
+@media (max-width: 768px) {
+  .galeria-grid__container {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .galeria-grid__item {
+    border-radius: 4px;
+  }
+
+  .lightbox__nav--prev {
+    left: var(--space-xs);
+  }
+
+  .lightbox__nav--next {
+    right: var(--space-xs);
+  }
+
+  .lightbox__image {
+    max-width: 95vw;
+    max-height: 80vh;
+  }
+
+  /* No mobile, download sempre visivel */
+  .galeria-grid__download {
+    opacity: 1;
+    transform: translateY(0);
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .galeria-grid__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .galeria-filtro {
+    padding: var(--space-sm) var(--section-padding-x);
+    gap: var(--space-sm);
+  }
+
+  .galeria-filtro__btn {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,52 @@
+<!-- 
+  LUMEN THE CLUB — Logo SVG
+  
+  Wordmark "lumen" recriada a partir da referencia em baixa resolucao.
+  Traco continuo ondulado, minusculas, dourado sobre transparente.
+  
+  PLACEHOLDER: substituir pelo arquivo vetorial original do cliente
+  quando disponivel.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180" fill="none">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8C97A"/>
+      <stop offset="50%" stop-color="#C9A24C"/>
+      <stop offset="100%" stop-color="#A85C32"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Wordmark "lumen" em traco continuo ondulado -->
+  <g stroke="url(#logoGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- l -->
+    <path d="M 30 30 L 30 110 Q 30 125 42 125"/>
+    
+    <!-- u -->
+    <path d="M 55 60 L 55 105 Q 55 125 72 125 Q 89 125 89 105 L 89 60"/>
+    
+    <!-- m (com ondulacao dupla - identidade visual) -->
+    <path d="M 105 125 L 105 60"/>
+    <path d="M 105 100 Q 105 60 130 60 Q 155 60 155 100"/>
+    <path d="M 155 100 Q 155 60 180 60 Q 205 60 205 100 L 205 125"/>
+    
+    <!-- Onda decorativa do "m" (traço ligando os arcos por cima) -->
+    <path d="M 108 52 Q 130 30 155 52 Q 180 30 202 52" 
+          stroke-width="3.5" opacity="0.8"/>
+    
+    <!-- e -->
+    <path d="M 220 90 L 262 90 Q 262 60 241 60 Q 220 60 220 90 Q 220 125 245 125 Q 260 125 265 112"/>
+    
+    <!-- n -->
+    <path d="M 280 125 L 280 60"/>
+    <path d="M 280 100 Q 280 60 305 60 Q 330 60 330 100 L 330 125"/>
+  </g>
+  
+  <!-- "the club" texto menor abaixo -->
+  <text x="200" y="160" 
+        text-anchor="middle" 
+        font-family="Inter, sans-serif" 
+        font-size="14" 
+        font-weight="300"
+        letter-spacing="6"
+        fill="#A9A39A">THE CLUB</text>
+</svg>

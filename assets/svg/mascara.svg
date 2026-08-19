@@ -1,0 +1,93 @@
+<!-- 
+  LUMEN THE CLUB — Mascara Veneziana SVG
+  
+  Mascara estilizada para uso como:
+  - Marca d'agua em secoes (opacidade 4-6%)
+  - Elemento decorativo no hero
+  - Icone de carregamento
+  
+  Baseada na referencia 02-logo-mascara-mural.jpg
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 280" fill="none">
+  <defs>
+    <linearGradient id="maskGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8C97A"/>
+      <stop offset="40%" stop-color="#C9A24C"/>
+      <stop offset="100%" stop-color="#A85C32"/>
+    </linearGradient>
+    <radialGradient id="maskGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E8C97A" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#C9A24C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Glow circular de fundo -->
+  <circle cx="150" cy="130" r="120" fill="url(#maskGlow)"/>
+
+  <!-- Arcos decorativos laterais (como na referencia do mural) -->
+  <path d="M 40 60 Q 10 130 40 200" 
+        stroke="url(#maskGrad)" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 260 60 Q 290 130 260 200" 
+        stroke="url(#maskGrad)" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+
+  <!-- Corpo principal da mascara -->
+  <g stroke="url(#maskGrad)" fill="none">
+    <!-- Contorno externo da mascara -->
+    <path d="M 70 120 
+             Q 70 80 110 65 
+             Q 140 55 150 50 
+             Q 160 55 190 65 
+             Q 230 80 230 120 
+             Q 230 155 200 170 
+             Q 170 185 150 195 
+             Q 130 185 100 170 
+             Q 70 155 70 120Z"
+          stroke-width="2.5"/>
+    
+    <!-- Olho esquerdo -->
+    <path d="M 95 110 Q 110 95 130 110 Q 110 125 95 110Z" 
+          stroke-width="2"/>
+    
+    <!-- Olho direito -->
+    <path d="M 170 110 Q 190 95 205 110 Q 190 125 170 110Z" 
+          stroke-width="2"/>
+    
+    <!-- Nariz (ponte) -->
+    <path d="M 145 105 Q 150 130 155 105" 
+          stroke-width="1.5" opacity="0.6"/>
+    
+    <!-- Ornamentos na testa (arabescos simplificados) -->
+    <path d="M 120 80 Q 135 60 150 70 Q 165 60 180 80" 
+          stroke-width="1.5" opacity="0.5"/>
+    <path d="M 130 72 Q 150 52 170 72" 
+          stroke-width="1" opacity="0.3"/>
+    
+    <!-- Pluma central (coroa da mascara) -->
+    <path d="M 150 50 Q 145 25 150 10 Q 155 25 150 50" 
+          stroke-width="2" opacity="0.6"/>
+    <path d="M 150 10 Q 140 0 150 -5 Q 160 0 150 10" 
+          stroke-width="1.5" opacity="0.4"/>
+    
+    <!-- Plumas laterais -->
+    <path d="M 110 65 Q 95 40 85 20" 
+          stroke-width="1.5" opacity="0.4"/>
+    <path d="M 190 65 Q 205 40 215 20" 
+          stroke-width="1.5" opacity="0.4"/>
+    
+    <!-- Ornamentos laterais (arabescos) -->
+    <path d="M 80 130 Q 60 130 55 120 Q 50 110 60 105" 
+          stroke-width="1.5" opacity="0.4"/>
+    <path d="M 220 130 Q 240 130 245 120 Q 250 110 240 105" 
+          stroke-width="1.5" opacity="0.4"/>
+
+    <!-- Detalhes de filigrana nas bochechas -->
+    <path d="M 100 140 Q 110 135 115 145" 
+          stroke-width="1" opacity="0.3"/>
+    <path d="M 200 140 Q 190 135 185 145" 
+          stroke-width="1" opacity="0.3"/>
+    <path d="M 105 150 Q 115 145 120 155" 
+          stroke-width="1" opacity="0.25"/>
+    <path d="M 195 150 Q 185 145 180 155" 
+          stroke-width="1" opacity="0.25"/>
+  </g>
+</svg>

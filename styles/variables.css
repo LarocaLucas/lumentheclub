@@ -1,0 +1,77 @@
+/* ══════════════════════════════════════════════════════════
+   LUMEN THE CLUB — Design Tokens (variables.css)
+   
+   Paleta, tipografia, espacamentos e transicoes centralizados.
+   Todas as cores e medidas do projeto derivam destes tokens.
+   ══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Paleta de cores ─────────────────────────────────── */
+  --color-bg-primary:     #0B0B0D;  /* Preto profundo */
+  --color-bg-secondary:   #17171A;  /* Preto suave (cards, secoes alternadas) */
+  --color-bg-elevated:    #1E1E22;  /* Superficie elevada (modais, dropdowns) */
+  
+  --color-gold:           #C9A24C;  /* Dourado primario (logo, CTAs, destaques) */
+  --color-champagne:      #E8C97A;  /* Dourado claro (glow, hover, brilho neon) */
+  --color-copper:         #A85C32;  /* Ambar/cobre (bordas, icones, texturas) */
+  
+  --color-text-primary:   #F5F0E6;  /* Off-white quente */
+  --color-text-secondary: #A9A39A;  /* Cinza quente (muted) */
+  --color-text-dim:       #6B6660;  /* Cinza bem sutil */
+  
+  /* Derivadas com transparencia para glows e overlays */
+  --color-gold-10:        rgba(201, 162, 76, 0.10);
+  --color-gold-20:        rgba(201, 162, 76, 0.20);
+  --color-gold-40:        rgba(201, 162, 76, 0.40);
+  --color-gold-05:        rgba(201, 162, 76, 0.05);
+  --color-black-60:       rgba(11, 11, 13, 0.60);
+  --color-black-80:       rgba(11, 11, 13, 0.80);
+  --color-black-90:       rgba(11, 11, 13, 0.90);
+
+  /* ── Tipografia ──────────────────────────────────────── */
+  --font-display:  'Anton', sans-serif;       /* Titulos de secao, CTAs de impacto */
+  --font-script:   'Yellowtail', cursive;     /* Tagline, destaques emocionais */
+  --font-body:     'Inter', sans-serif;       /* Corpo de texto */
+
+  /* Tamanhos fluidos (clamp: min, preferred, max) */
+  --text-hero-title:   clamp(3.5rem, 10vw, 8rem);
+  --text-hero-tagline: clamp(1.5rem, 4vw, 3rem);
+  --text-section:      clamp(2.5rem, 6vw, 5rem);
+  --text-card-title:   clamp(1.25rem, 2.5vw, 1.75rem);
+  --text-body:         clamp(0.9rem, 1.2vw, 1.05rem);
+  --text-small:        clamp(0.75rem, 1vw, 0.875rem);
+  --text-nav:          clamp(0.7rem, 0.9vw, 0.85rem);
+
+  /* ── Espacamentos ────────────────────────────────────── */
+  --space-xs:   0.5rem;
+  --space-sm:   1rem;
+  --space-md:   2rem;
+  --space-lg:   4rem;
+  --space-xl:   6rem;
+  --space-2xl:  8rem;
+
+  --section-padding-x: clamp(1.25rem, 5vw, 6rem);
+  --section-padding-y: clamp(4rem, 10vh, 8rem);
+
+  /* ── Layout ──────────────────────────────────────────── */
+  --max-width:     1280px;
+  --nav-height:    72px;
+  --border-radius: 8px;
+
+  /* ── Transicoes ──────────────────────────────────────── */
+  --ease-smooth:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-bounce:  cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  --duration-fast:    0.2s;
+  --duration-normal:  0.4s;
+  --duration-slow:    0.8s;
+
+  /* ── Glow / Sombras ─────────────────────────────────── */
+  --glow-gold:      0 0 30px rgba(201, 162, 76, 0.4),
+                    0 0 60px rgba(201, 162, 76, 0.2),
+                    0 0 120px rgba(201, 162, 76, 0.1);
+  --glow-gold-soft: 0 0 15px rgba(201, 162, 76, 0.2),
+                    0 0 40px rgba(201, 162, 76, 0.1);
+  --glow-text:      0 0 10px rgba(232, 201, 122, 0.6),
+                    0 0 30px rgba(201, 162, 76, 0.4),
+                    0 0 60px rgba(201, 162, 76, 0.2);
+}

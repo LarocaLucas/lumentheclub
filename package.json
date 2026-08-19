@@ -1,0 +1,19 @@
+{
+  "name": "lumen-the-club",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institucional da Lumen The Club — luxury nightclub em Ponta Grossa/PR.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": "Laroca Dev",
+  "type": "module",
+  "devDependencies": {
+    "vite": "^8.2.1"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0"
+  }
+}
